@@ -10,7 +10,7 @@ childRouter
     const childrenList = await ChildRecord.listAll();
     const giftsList = await GiftRecord.listAll();
 
-    res.render('children/list', {
+    res.json({
       childrenList,
       giftsList,
     });
@@ -30,16 +30,13 @@ childRouter
       throw new ValidationError('Child ID not found');
     }
 
-    const gift =
-      req.body.giftId === '' ? null : await GiftRecord.getOne(req.body.giftId);
+    const gift = req.body.giftId === '' ? null : await GiftRecord.getOne(req.body.giftId);
     // console.log(gift);
     // console.log(child);
 
     if (gift) {
       if (gift.count <= (await gift.countGivenGifts())) {
-        throw new ValidationError(
-          'This gift isnt available, Santa Clause have to small warehouse'
-        );
+        throw new ValidationError('This gift isnt available, Santa Clause have to small warehouse');
       }
     }
 

@@ -4,8 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "ts-node index.ts",
-    "start2": "tsnd index.ts"
+    "start1": "ts-node index.ts",
+    "start": "tsnd index.ts"
   },
   "keywords": [],
   "author": "",
