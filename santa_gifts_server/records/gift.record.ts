@@ -2,10 +2,11 @@ import { pool } from '../utils/db';
 import { ValidationError } from '../utils/error';
 import { v4 as uuid } from 'uuid';
 import { FieldPacket } from 'mysql2';
+import { GiftEntity } from '../types';
 
 type GiftRecordResults = [GiftRecord[], FieldPacket[]];
 
-export class GiftRecord {
+export class GiftRecord implements GiftEntity {
   id?: string;
   name: string;
   count: number;
@@ -35,18 +36,13 @@ export class GiftRecord {
   }
 
   static async listAll(): Promise<GiftRecord[]> {
-    const [results] = (await pool.execute(
-      'SELECT * FROM `gifts`'
-    )) as GiftRecordResults;
+    const [results] = (await pool.execute('SELECT * FROM `gifts`')) as GiftRecordResults;
     return results.map((obj) => new GiftRecord(obj));
   }
   static async getOne(id: string): Promise<GiftRecord | null> {
-    const [results] = (await pool.execute(
-      'SELECT * FROM `gifts` WHERE `id` = :id',
-      {
-        id,
-      }
-    )) as GiftRecordResults;
+    const [results] = (await pool.execute('SELECT * FROM `gifts` WHERE `id` = :id', {
+      id,
+    })) as GiftRecordResults;
     return results.length === 0 ? null : new GiftRecord(results[0]);
   }
 
