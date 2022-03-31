@@ -5,6 +5,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 interface Props {
   gift: GiftEntity;
+  onGiftsChange: () => void;
 }
 
 export const GiftsTableRow = (props: Props) => {
@@ -21,7 +22,9 @@ export const GiftsTableRow = (props: Props) => {
       const error = await res.json();
       const notify = () => toast(`Error occurred ${error}`);
       notify();
+      return;
     }
+    props.onGiftsChange();
   };
 
   return (
