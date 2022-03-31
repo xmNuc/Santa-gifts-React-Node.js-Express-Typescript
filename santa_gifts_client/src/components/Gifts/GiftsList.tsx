@@ -5,14 +5,16 @@ import { GiftsTable } from './GiftsTable';
 export const GiftsList = () => {
   const [giftsList, setGiftsList] = useState<GiftEntity[] | null>(null);
 
+  const refreshGifts = async () => {
+    const res = await fetch('http://localhost:3001/gift');
+    const data = await res.json();
+    setGiftsList(data.giftsList);
+    //   console.log(data);
+  };
+
   useEffect(() => {
-    (async () => {
-      const res = await fetch('http://localhost:3001/gift');
-      const data = await res.json();
-      setGiftsList(data.giftsList);
-      //   console.log(data);
-    })();
-  });
+    refreshGifts();
+  }, []);
 
   if (giftsList === null) {
     return <p>Loading...</p>;

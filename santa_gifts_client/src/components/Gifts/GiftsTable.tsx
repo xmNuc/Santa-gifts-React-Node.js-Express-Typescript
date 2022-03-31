@@ -14,6 +14,7 @@ export const GiftsTable = (props: Props) => {
           <th>ID</th>
           <th>Name</th>
           <th>Count</th>
+          <th>Action</th>
         </tr>
       </thead>
       <tbody>

@@ -1,3 +1,5 @@
+// prettier-ignore
+
 import { pool } from '../utils/db';
 import { ValidationError } from '../utils/error';
 import { v4 as uuid } from 'uuid';
@@ -24,13 +26,10 @@ export class ChildRecord {
     if (!this.id) {
       this.id = uuid();
     }
-    await pool.execute(
-      'INSERT INTO `children`(`id`, `name`) VALUES(:id, :name)',
-      {
-        id: this.id,
-        name: this.name,
-      }
-    );
+    await pool.execute('INSERT INTO `children`(`id`, `name`) VALUES(:id, :name)', {
+      id: this.id,
+      name: this.name,
+    });
     return this.id;
   }
 
@@ -41,12 +40,9 @@ export class ChildRecord {
     return results.map((obj) => new ChildRecord(obj));
   }
   static async getOne(id: string): Promise<ChildRecord | null> {
-    const [results] = (await pool.execute(
-      'SELECT * FROM `children` WHERE `id` = :id',
-      {
-        id,
-      }
-    )) as ChildRecordResults;
+    const [results] = (await pool.execute('SELECT * FROM `children` WHERE `id` = :id', {
+      id,
+    })) as ChildRecordResults;
     return results.length === 0 ? null : new ChildRecord(results[0]);
   }
 

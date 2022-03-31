@@ -1,3 +1,7 @@
+// prettier-ignore
+
+
+
 import { pool } from '../utils/db';
 import { ValidationError } from '../utils/error';
 import { v4 as uuid } from 'uuid';
@@ -44,6 +48,12 @@ export class GiftRecord implements GiftEntity {
       id,
     })) as GiftRecordResults;
     return results.length === 0 ? null : new GiftRecord(results[0]);
+  }
+
+  async delete(): Promise<void> {
+    await pool.execute("DELETE FROM `gifts` WHERE `id` = :id", {
+      id: this.id,
+    });
   }
 
   async countGivenGifts(): Promise<number> {
