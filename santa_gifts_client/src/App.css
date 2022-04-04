@@ -1,11 +1,23 @@
+body {
+  min-height: 100vh;
+  background-image: linear-gradient(89.7deg, rgb(13, 19, 39) -10.7%, rgb(36, 67, 94) 88.8%);
+}
+
 .App {
   text-align: center;
-  background-color: #282c34;
-  min-height: 100vh;
+
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(8px + 2vmin);
   color: white;
+}
+a,
+a:link,
+a:visited,
+a:hover,
+a:active {
+  color: burlywood;
+  text-decoration: none;
 }

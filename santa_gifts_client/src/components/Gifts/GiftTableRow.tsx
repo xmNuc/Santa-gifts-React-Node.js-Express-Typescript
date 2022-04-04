@@ -2,6 +2,7 @@ import React, { MouseEvent } from 'react';
 import { GiftEntity } from 'types';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Link } from 'react-router-dom';
 
 interface Props {
   gift: GiftEntity;
@@ -29,8 +30,9 @@ export const GiftsTableRow = (props: Props) => {
 
   return (
     <tr>
-      <th>{props.gift.id}</th>
-      <td>{props.gift.name}</td>
+      <th>
+        <Link to={`/gift/${props.gift.id}`}>{props.gift.name}</Link>
+      </th>
       <td>{props.gift.count}</td>
       <td>
         <a href="#" onClick={deleteGift}>
