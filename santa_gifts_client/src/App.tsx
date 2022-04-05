@@ -16,7 +16,7 @@ function App() {
         <Route path="/gift" element={<GiftsView />} />
         <Route path="/gift/:idOfGift" element={<SingleGiftView />} />
         <Route path="/child" element={<Childview />} />
-        {/* <Route path="/test/:foo" element={<Test />} /> */}
+        <Route path="/" element={<GiftsView />}></Route>
         <Route path="*" element={<NotFoundView />} />
       </Routes>
     </div>

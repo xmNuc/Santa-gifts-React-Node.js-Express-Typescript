@@ -1,5 +1,6 @@
 import React from 'react';
 import { GiftEntity, ChildEntity } from 'types';
+import { ChildGiftSelect } from '../ChildGiftSelect/ChildGiftSelect';
 
 interface Props {
   child: ChildEntity;
@@ -10,7 +11,13 @@ export const ChildrenTableRow = (props: Props) => {
   return (
     <tr>
       <th>{props.child.name}</th>
-      <td>{props.child.giftId}</td>
+      <td>
+        <ChildGiftSelect
+          giftsList={props.giftsList}
+          selectedId={props.child.giftId}
+          childId={props.child.id as string}
+        />
+      </td>
     </tr>
   );
 };
