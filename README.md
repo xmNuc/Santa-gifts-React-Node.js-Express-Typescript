@@ -5,5 +5,6 @@ Mysql database.
 
 <img src="https://raw.githubusercontent.com/xmNuc/Santa-gifts-React-Node.js-Express-Typescript/master/2.jpg" alt="Santas gifts app screanshot" />
 
-Made while MegaK coure. Jakub.
-2022
+
+Made while MegaK course 2022. Jakub.
+
